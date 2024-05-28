@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudPoint-Weather Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <h1>WEATHER APP</h1>
+        <div class="tab-container">
+            <p class="tab currentTab" data-userWeather>Your Weather</p>
+            <p class="tab" data-searchWeather>Search Weather</p> 
+        </div>
+
+    <div class="weather-container subContainer">
+        <!-- Grant location access -->
+        <div class="grant-location subContainer">
+            <img src="assets/location.png" alt="" width="80" height="80" loading="lazy">
+            <p>Grant location access</p>
+            <p>Allow access to get the weather information.</p>
+            <button class="grant-btn" data-grantaccess>Grant Access</button>
+        </div>
+        <!-- Search weather form  -->
+        <form class="search-weather active" data-forminput>
+                <input type="text" placeholder="Search your city..." data-searchinput>
+                <button class="search-btn" type="submit">
+                    <img src="assets/search (1).png" width="20" height="20" loading="lazy">
+                </button>
+        </form>
+        <!-- Loading screen  -->
+        <div class="loading-container subContainer">
+            <img src="assets/loading.gif" width="80" height="80" >
+            <p>Loading</p>
+        </div>
+        <!-- show weather information  -->
+        <div class="show-weather-info subContainer active">
+            <!-- City and Country name  -->
+            <div class="name" >
+                <p class="city-name" data-cityname></p>
+                <p data-countryname></p>
+            </div>
+            <p data-weatherdes>Weather type</p>
+            <img data-weathericon src="" >
+            <h2 class="temp-value" data-tempvalue></h2>
+
+            <div class="weather-statistics">
+                <!-- Container-1  -->
+                <div class="windspeed parameter">
+                    <img src="assets/windspeed.png" height="50" width="50">
+                    <p>Windspeed</p>
+                     <p class="value" data-windspeed></p>
+                </div>
+                <!-- Container-2  -->
+                <div class="Humidity parameter">
+                    <img src="assets/humidity.png" height="50" width="50">
+                    <p>Humidity</p>
+                     <p class="value" data-humidity></p>
+                </div>
+                <!-- Container-3  -->
+                <div class="Cloud parameter">
+                    <img src="assets/clouds.png" height="50" width="50">
+                    <p>Clouds</p>
+                     <p class="value" data-clouds></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location not found  -->
+        <div class="error-container subContainer active">
+            <img src="assets/not-found.jpg" data-errorImg width="100px" height="100px">
+            <p data-errorText></p>
+            <button class="retry-btn" data-errorButton>Retry Now</button>
+        </div>
+    </div>
+    
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>

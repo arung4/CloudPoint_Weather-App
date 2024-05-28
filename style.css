@@ -1,0 +1,218 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather Sans", sans-serif;
+}
+
+:root {
+    --colorDark1: #112d4e;
+    --colorDark2: #3f72af;
+    --colorLight1: #dbe2ef;
+    --colorLight2: #f9f7f7;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    color: var(--colorLight2);
+    background-color: #112d4e;
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+}
+
+/* Heading and Tab Container 
+ */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    word-spacing: 2px;
+    letter-spacing: 1.75px;
+    margin-block: 2rem;
+}
+
+.tab-container {
+    width: 90%;
+    max-width: 550px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.tab {
+    cursor: pointer;
+    font-size: 0.875rem;
+    letter-spacing: 1.75px;
+    padding: 5px 8px;
+    text-transform: capitalize;
+    /* font-weight: 600; */
+}
+
+.tab.currentTab {
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 4px;
+}
+
+ /* Weather container  */
+.weather-container{
+    margin-top:4rem;
+}
+ /* Grant access container  */
+.grant-btn{
+    all: unset;  /* to remove all default properties */
+    font-size:0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding:10px 30px;
+    border-radius: 5px;
+    background-color: var(--colorDark2);
+    color:#fff;
+    cursor: pointer;
+}
+.subContainer{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.grant-location{
+    display: none;
+}
+
+.grant-location.active{
+    display: flex;
+}
+.grant-location img{
+    margin-bottom: 2rem;
+}
+.grant-location p:first-of-type{
+    text-transform: capitalize;
+    font-size:1.5rem;
+    margin-bottom: 0.5rem;
+}
+.grant-location p:last-of-type{
+    font-size:0.9rem;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.75px;
+}
+
+/* loading container  */ 
+.loading-container{
+    display: none;
+}
+.loading-container.active{
+    display: flex;
+}
+.loading-container p{
+    text-transform: uppercase;
+    margin-top: 1rem;
+    letter-spacing: 1px;
+}
+
+/* search weather container  */
+.search-weather{
+    display: flex;
+    max-width:550px;
+    justify-content: space-between;
+    gap:0.58rem;
+    margin-bottom: 2rem;
+}
+.search-weather.active{
+    display: none;
+}
+.search-weather input{
+    all:unset;
+    padding: 8px 12px;
+    width:490px;
+    font-size:1.1rem;
+    color: #e6e0e0;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    background-color: rgba(219, 226, 239, 0.5);
+}
+.search-weather input::placeholder{
+    color:#e6e0e0;
+}
+.search-weather .search-btn{
+    padding: 0 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: var(--colorLight1);
+}
+.search-weather.active{
+    display: none;
+}
+/* Show weather info  */
+
+.name{
+    display: flex;
+    gap:.3rem;
+    margin-bottom: 1rem;
+}
+.name p{
+    font-size:1.8rem;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+.show-weather-info p[data-weatherdes]{
+    font-size:1.2rem;
+    letter-spacing: 1px;
+}
+.show-weather-info img[data-weathericon]{
+    width:90px;
+    height:90px;
+}
+.show-weather-info.active{ 
+    display: none;
+}
+.temp-value{
+    margin-top: 0.5rem;
+    font-size:2.75rem;
+    letter-spacing: 1px;
+}
+.weather-statistics {
+    margin: 2rem;
+    display: flex;
+    gap:5rem;
+}
+
+.parameter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:0.5rem;
+    width:140px; 
+    border-radius: 4px;
+    /* height: 110px; */
+    padding:10px 12px;
+    background-color: rgba(219, 226, 239, 0.5);
+}
+.parameter p:first-of-type{
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.parameter .value{
+    font-size:1.2rem;
+    letter-spacing: 1px;
+}
+
+/* error container  */
+.error-container{
+    gap:1rem;
+}
+.error-container.active{
+    display:none;
+}
+.retry-btn{
+    all: unset;  /* to remove all default properties */
+    font-size:0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding:8px 20px;
+    border-radius: 5px;
+    background-color: rgba(219, 226, 239, 0.5);
+    color:#fff;
+    cursor: pointer;
+}
