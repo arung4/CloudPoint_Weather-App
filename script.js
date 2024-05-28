@@ -94,19 +94,23 @@ async function fetchUserWeather(coordinates){
      grantLocationContainer.classList.remove("active");
      // make loading screen visible 
      loadingScreen.classList.add("active"); 
+     weatherInfoContainer.classList.add("active"); 
 
      try{
         const response=await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lon}&aqi=no`); 
-        
-        const data= await response.json();
-        // if(!data.sys){
-        //     throw data;
-        // }
-        // remove the loading screen 
-        loadingScreen.classList.remove("active"); 
-        // add the weatherInfoContainer 
-        weatherInfoContainer.classList.remove("active"); 
-        renderWeatherInformation(data); 
+        const data= await response.json(); 
+
+        if(response.status === 400){
+            notFound.classList.remove("active"); 
+            loadingScreen.classList.remove("active"); 
+         } else{
+  // remove the loading screen 
+  loadingScreen.classList.remove("active"); 
+  // add the weatherInfoContainer 
+  weatherInfoContainer.classList.remove("active"); 
+  renderWeatherInformation(data); 
+         }
+      
      }
      catch(err){
         loadingScreen.classList.remove('active');
@@ -114,7 +118,7 @@ async function fetchUserWeather(coordinates){
         // errorImage.style.display = 'none';
         errorText.innerText = `Error: ${err?.message}`;
         // errorBtn.style.display = 'block';
-        errorBtn.addEventListener("click", fetchWeatherInfo);
+        errorBtn.addEventListener("click", fetchUserWeather);
      }
 
 }
@@ -161,37 +165,30 @@ searchForm.addEventListener("submit",(e)=>{
 })
 
 async function fetchCityInfo(city){
+    notFound.classList.add("active"); 
     grantLocationContainer.classList.remove("active"); 
     loadingScreen.classList.add("active"); 
     weatherInfoContainer.classList.add("active"); 
-    // notFound.classList.remove("active");
     try{
+       
         const response= await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}&aqi=no`); 
-        console.log(response); 
-        // if(!response.ok){
-        //     notFound.classList.remove(active); 
-        // }
         const data= await response.json(); 
-        console.log(data); 
-        if (!data.sys) {
-            loadingScreen.classList.remove("active");
-            errorText.innerText = "City not found";
-            notFound.classList.remove("active"); 
-        } else{
+       
+       if(response.status === 400){
+          notFound.classList.remove("active"); 
+          errorText.innerText = "Search not found";
+          loadingScreen.classList.remove("active"); 
+       }
+         else{
             renderWeatherInformation(data); 
             loadingScreen.classList.remove("active"); 
             weatherInfoContainer.classList.remove("active"); 
-        }
-     
+         }  
+        
     }catch(err){
         loadingScreen.classList.remove('active');
         weatherInfoContainer.classList.add('active');
-        notFound.classList.add('active');
+        notFound.classList.remove('active');
         errorText.innerText = `${err?.message}`;
-        // errorBtn.style.display = "none";
     }
 }
-
-// errorBtn.addEventListener("click",()=>{
-//     notFound.classList.add("active");
-// })
