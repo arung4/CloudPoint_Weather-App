@@ -215,4 +215,22 @@ h1 {
     background-color: rgba(219, 226, 239, 0.5);
     color:#fff;
     cursor: pointer;
+} 
+
+@media (max-width:430px) {
+    .weather-statistics{
+        flex-direction: column;
+    }
+}
+
+@media (max-width:590px) {
+    .weather-statistics{
+        flex-direction: column;
+    }
+}
+
+@media (max-width:590px) {
+    .search-weather input{
+        width:300px;
+    }
 }
